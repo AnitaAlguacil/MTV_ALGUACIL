@@ -16,8 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import hola
+from .views import fecha
+from .views import calcular_fecha_nacimiento
+
 
 urlpatterns = [
     path('hola/', hola),
+    path('fecha/', fecha),
+    path('fecha-nacimiento/<int:edad>', calcular_fecha_nacimiento),
     path('admin/', admin.site.urls),
 ]
