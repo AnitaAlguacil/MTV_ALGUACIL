@@ -18,11 +18,13 @@ from django.urls import path
 from .views import hola
 from .views import fecha
 from .views import calcular_fecha_nacimiento
+from .views import mi_template
 
 
 urlpatterns = [
     path('hola/', hola),
     path('fecha/', fecha),
     path('fecha-nacimiento/<int:edad>', calcular_fecha_nacimiento),
+    path('mi-template/', mi_template),
     path('admin/', admin.site.urls),
 ]
