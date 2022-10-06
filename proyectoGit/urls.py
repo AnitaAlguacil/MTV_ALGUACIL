@@ -33,6 +33,6 @@ urlpatterns = [
     path('mi-template/<str:nombre>', tu_template),
     path('prueba-template/', prueba_template),
     path('ver-personas/', ver_personas),
-    path('crear-persona/<str:nombre>/<str:apellido>/', crear_persona),
+    path('crear-personas/', crear_persona),
     path('admin/', admin.site.urls),
 ]
