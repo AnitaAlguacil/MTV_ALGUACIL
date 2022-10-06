@@ -54,9 +54,9 @@ def prueba_template(request):
     return HttpResponse(template_renderizado)
 
 
-def crear_persona(request, nombre, apellido):
+def crear_persona ( request ,nombre,apellido):
     
-    persona =Persona(nombre=nombre, apellido=apellido, edad=random.randrange(1,99), fecha_nacimiento= datetime.now())
+    persona = Persona(nombre=nombre, apellido=apellido, edad=random.randrange(1,99), fecha_creacion= datetime.now())
     persona.save()
     
     template = loader.get_template('crear_persona.html')    
