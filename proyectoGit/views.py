@@ -3,7 +3,9 @@ from contextvars import Context
 from django.http import HttpResponse
 from datetime import datetime
 from django.template import Context, Template, loader
+import random 
 
+from home.models import Persona
 
 def hola (request):
     return HttpResponse('<h1> Hola,bienvenido </h1>')
@@ -37,9 +39,37 @@ def tu_template(request, nombre):
     return HttpResponse(template_renderizado)
 
 
-def prueba_template(request, nombre):    
-       
+def prueba_template(request):  
+    
+    mi_contexto = {
+        
+        'rango': list (range (1,11)),
+        'valor_aleatorio': random.randrange(1,11)
+        } 
+        
+            
     template = loader.get_template('prueba_template.html')    
-    template_renderizado = template.render({})
+    template_renderizado = template.render(mi_contexto)
+    
+    return HttpResponse(template_renderizado)
+
+
+def crear_persona(request, nombre, apellido):
+    
+    persona =Persona(nombre=nombre, apellido=apellido, edad=random.randrange(1,99), fecha_nacimiento= datetime.now())
+    persona.save()
+    
+    template = loader.get_template('crear_persona.html')    
+    template_renderizado = template.render({'persona': persona })    
+    return HttpResponse(template_renderizado)
+
+
+
+def ver_personas(request):
+    
+    personas = Persona.objects.all()  
+        
+    template = loader.get_template('ver_personas.html')    
+    template_renderizado = template.render({'personas': personas })    
     
     return HttpResponse(template_renderizado)

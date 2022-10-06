@@ -21,6 +21,8 @@ from .views import calcular_fecha_nacimiento
 from .views import mi_template
 from .views import tu_template
 from .views import prueba_template
+from .views import ver_personas
+from .views import crear_persona
 
 
 urlpatterns = [
@@ -30,5 +32,7 @@ urlpatterns = [
     path('mi-template/', mi_template),
     path('mi-template/<str:nombre>', tu_template),
     path('prueba-template/', prueba_template),
+    path('ver-personas/', ver_personas),
+    path('crear-persona/<str:nombre>/<str:apellido>/', crear_persona),
     path('admin/', admin.site.urls),
 ]
