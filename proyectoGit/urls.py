@@ -15,24 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import hola
-from .views import fecha
-from .views import calcular_fecha_nacimiento
-from .views import mi_template
-from .views import tu_template
-from .views import prueba_template
-from .views import ver_personas
-from .views import crear_persona
+from ..home import views
+
 
 
 urlpatterns = [
-    path('hola/', hola),
-    path('fecha/', fecha),
-    path('fecha-nacimiento/<int:edad>', calcular_fecha_nacimiento),
-    path('mi-template/', mi_template),
-    path('mi-template/<str:nombre>', tu_template),
-    path('prueba-template/', prueba_template),
-    path('ver-personas/', ver_personas),
-    path('crear-personas/', crear_persona),
+    path('hola/', views.hola),
+    path('fecha/', views.fecha),
+    path('fecha-nacimiento/<int:edad>', views.calcular_fecha_nacimiento),
+    path('mi-template/', views.mi_template),
+    path('mi-template/<str:nombre>', views.tu_template),
+    path('prueba-template/', views.prueba_template),
+    path('ver-personas/', views.ver_personas),
+    path('crear-personas/', views.crear_persona),
     path('admin/', admin.site.urls),
 ]
